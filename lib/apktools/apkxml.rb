@@ -135,7 +135,7 @@ class ApkXml
     data = nil
 
     Zip.warn_invalid_date = false
-    Zip::File.foreach(@current_apk) do |f|
+    Zip::File.open_buffer(@current_apk).each do |f|
       if f.name.match(xml_file)
         data = f.get_input_stream.read.force_encoding('BINARY')
       end
