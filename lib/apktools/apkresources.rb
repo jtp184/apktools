@@ -137,7 +137,7 @@ class ApkResources
     apk_file = Zip::File.open_buffer(apk_file) 
 
     # Get resources.arsc from the APK file
-    Zip::File.foreach(apk_file) do |f|
+    apk_file.each do |f|
       if f.name.match(/resources.arsc/)
         data = f.get_input_stream.read.force_encoding('BINARY')
       end
