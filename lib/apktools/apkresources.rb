@@ -134,6 +134,7 @@ class ApkResources
   def initialize(apk_file)
     data = nil
     Zip.warn_invalid_date = false
+    apk_file = Zip::File.open_buffer(apk_file) 
 
     # Get resources.arsc from the APK file
     Zip::File.foreach(apk_file) do |f|
